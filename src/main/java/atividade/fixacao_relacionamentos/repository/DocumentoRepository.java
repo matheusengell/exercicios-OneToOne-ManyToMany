@@ -6,4 +6,5 @@ import atividade.fixacao_relacionamentos.model.Documento;
 
 public interface DocumentoRepository extends JpaRepository<Documento, Long>{
 
+    boolean existsByNumero(String numero);
 }

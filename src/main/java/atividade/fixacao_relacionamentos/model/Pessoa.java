@@ -1,10 +1,6 @@
 package atividade.fixacao_relacionamentos.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,7 +20,7 @@ public class Pessoa {
 
     private String nome;
 
-    @OneToOne(mappedBy= "documento")
+    @OneToOne(mappedBy= "pessoa", cascade = CascadeType.ALL)
     private Documento documento;
 
     public Pessoa(String nome, Documento documento) {

@@ -22,7 +22,9 @@ public class PessoaMapper {
         return new PessoaResponseDto(
                 pessoa.getId(),
                 pessoa.getNome(),
-                new DocumentoMapper().toDto(pessoa.getDocumento())
+                pessoa.getDocumento() != null
+                ? new DocumentoMapper().toDto(pessoa.getDocumento())
+                        :null
         );
     }
 }
