@@ -28,7 +28,7 @@ public class PessoaService {
             throw new RuntimeException("Documento já cadastrado");
         }
         Pessoa pessoa = mapper.toEntity(requestDto);
-        pessoa.getDocumento().setPessoa(pessoa); // ← liga aqui
+        pessoa.getDocumento().setPessoa(pessoa);
         repository.save(pessoa);
         return mapper.toDto(pessoa);
     }

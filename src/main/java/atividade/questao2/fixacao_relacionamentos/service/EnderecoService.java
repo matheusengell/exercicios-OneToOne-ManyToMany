@@ -16,5 +16,21 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EnderecoService {
 
+    private final EnderecoRepository repository;
+    private final EnderecoMapper mapper;
+
+    public EnderecoResponseDto criar(EnderecoRequestDto requestDto){
+        Endereco endereco = mapper.toEntity(requestDto);
+        repository.save(endereco);
+        return mapper.toDto(endereco);
+    }
+
+    public List<EnderecoResponseDto> listar(){
+        List<Endereco> enderecos = repository.findAll();
+
+        return enderecos.stream()
+                .map(mapper::toDto)
+                .toList();
+    }
 
 }
